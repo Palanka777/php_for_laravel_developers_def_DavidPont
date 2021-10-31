@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Task;
+use App\Models\User2;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,78 +16,24 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    $task1=new stdClass();
-    $task1->id=1;
-    $task1->title="Task 1";
-    $task1->description="bla bla bla";
-    $task1->completed= 1;
-
-    $task2=new stdClass();
-    $task2->id=2;
-    $task2->title="Task 2";
-    $task2->description="bla bli blu";
-    $task2->completed= 0;
-
-    $tasks=[
-        $task1,
-        $task2
-    ];
 
     return view('tasks',[
-        'tasks'=>$tasks
+        'tasks'=>Task::all()
     ]);
 });
 
 Route::get('/tasks', function () {
-    $task1=new stdClass();
-    $task1->id=1;
-    $task1->title="Task 1";
-    $task1->description="bla bla bla";
-    $task1->completed= 1;
-
-    $task2=new stdClass();
-    $task2->id=2;
-    $task2->title="Task 2";
-    $task2->description="bla bli blu";
-    $task2->completed= 0;
-
-    $task3=new stdClass();
-    $task3->id=3;
-    $task3->title="Task 3";
-    $task3->description="bla bli blu";
-    $task3->completed= 0;
-
-    $tasks=[
-        $task1,
-        $task2,
-        $task3
-    ];
 
     return view('tasks',[
-        'tasks'=>$tasks
-    ]);
+        'tasks'=>Task::all()
+        ]);
 });
 
 Route::get('/users', function () {
-    $users1=new stdClass();
-    $users1->id=1;
-    $users1->name="David";
-    $users1->surname="Pont";
-    $users1->email= "dpont@iesebre.com";
 
-    $users2=new stdClass();
-    $users2->id=2;
-    $users2->name="Albert";
-    $users2->surname="Ormazabal";
-    $users2->email= 'ormazabla@iesebre.com';
-
-    $users=[
-        $users1,
-        $users2
-    ];
 
     return view('users',[
-        'users'=>$users
+        'users'=>User2::all()
     ]);
 });
 
