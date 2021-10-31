@@ -1,7 +1,9 @@
 <?php
 
-use App\Models\Task;
-use App\Models\User2;
+use App\Http\Controllers\AboutController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\TaskController;
+use App\Http\Controllers\User2Controller;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,32 +17,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Route::get('/', [TaskController::class,'index'] );
 
-    return view('tasks',[
-        'tasks'=>Task::all()
-    ]);
-});
+Route::get('/tasks',[TaskController::class,'index'] );
 
-Route::get('/tasks', function () {
+Route::get('/users', [User2Controller::class,'index'] );
 
-    return view('tasks',[
-        'tasks'=>Task::all()
-        ]);
-});
+Route::get('/contact', [ContactController::class,'index']);
 
-Route::get('/users', function () {
-
-
-    return view('users',[
-        'users'=>User2::all()
-    ]);
-});
-
-Route::get('/contact', function () {
-    return view('contact');
-});
-
-Route::get('/about', function () {
-    return view('about');
-});
+Route::get('/about', [AboutController::class,'index']);
