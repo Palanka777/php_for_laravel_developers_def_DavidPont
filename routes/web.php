@@ -49,9 +49,16 @@ Route::get('/tasks', function () {
     $task2->description="bla bli blu";
     $task2->completed= 0;
 
+    $task3=new stdClass();
+    $task3->id=3;
+    $task3->title="Task 3";
+    $task3->description="bla bli blu";
+    $task3->completed= 0;
+
     $tasks=[
         $task1,
-        $task2
+        $task2,
+        $task3
     ];
 
     return view('tasks',[
